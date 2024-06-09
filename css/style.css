@@ -1,0 +1,508 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Golos Text", sans-serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    color: #313131;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.span,
+p {
+    margin: 0;
+}
+
+.container {
+    max-width: 1222px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.title {
+    font-family: "Merriweather", serif;
+    font-size: 54px;
+    font-weight: 400;
+    line-height: 64.8px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+/* header */
+
+.header {
+    background-color: #E9DED4;
+    margin-bottom: 80px;
+}
+
+.header__container {
+    position: relative;
+    overflow: hidden;
+    background-image: url('/img/chess.png');
+    background-size: auto;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+.header__container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    mix-blend-mode: color-burn;
+    z-index: 1;
+}
+
+.header__icon {
+    display: flex;
+    gap: 6px;
+    padding-top: 26px;
+    margin-bottom: 62px;
+}
+
+.header__iconText {
+    color: #595653;
+    font-size: 16.65px;
+    font-weight: 700;
+    line-height: 17.98px;
+    text-transform: uppercase;
+}
+
+.header__main {
+    max-width: 542px;
+    margin-bottom: 129px;
+}
+
+.header__title {
+    font-family: "Merriweather", serif;
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 66px;
+    text-transform: uppercase;
+    color: #313131;
+    margin: 0;
+    margin-bottom: 24px;
+}
+
+.header__title__secons-span {
+    margin-left: 91px;
+}
+
+.header__title__third-span {
+    margin-left: 34px;
+}
+
+.header__descr {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23.4px;
+    text-align: center;
+    color: black;
+    margin-bottom: 40px;
+}
+
+.header__buttons {
+    display: flex;
+    gap: 16px;
+    text-align: center;
+}
+
+.header__buttons__black {
+    width: 263px;
+    padding: 13px 49px;
+    border-radius: 66px;
+    border: 2px solid #1F1F1F;
+    background-color: #1F1F1F;
+    color: #FFFFFF;
+    outline: none;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 20.8px;
+    text-align: center;
+    transition: all .3s ease-in-out;
+}
+
+.header__buttons__black:hover {
+    border: 2px solid #FBCE51;
+    background-color: #FBCE51;
+    color: #1F1F1F;
+}
+
+.header__buttons__clear {
+    width: 263px;
+    padding: 13px 49px;
+    border-radius: 66px;
+    border: 2px solid #1F1F1F;
+    background-color: transparent;
+    color: #1F1F1F;
+    outline: none;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 20.8px;
+    text-align: center;
+    transition: all .3s ease-in-out;
+}
+
+.header__buttons__clear:hover {
+    background-color: #1F1F1F;
+    color: #FFFFFF;
+}
+
+.marquee-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F54932;
+    height: 60px;
+    z-index: 1;
+}
+
+.marquee-content {
+    font-family: "Merriweather", serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 24.2px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    white-space: nowrap;
+    display: inline-block;
+    position: absolute;
+    animation: marquee linear infinite;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* lection */
+
+.lection__container {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    margin-bottom: 64px;
+}
+
+.lection__title {
+    max-width: 764px;
+    font-family: "Merriweather", serif;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 48.6px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+/* price */
+
+.price__container {
+    display: flex;
+    gap: 35px;
+    margin-bottom: 200px;
+}
+
+.price__img {
+    width: 100%;
+    position: relative;
+}
+
+.price__img-position {
+    left: -36px;
+    top: -32px;
+    position: absolute;
+}
+
+.price__title {
+    font-family: "Merriweather", serif;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 48.6px;
+    text-align: left;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+td {
+    border-bottom: 2px solid #D0D0D0;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+    padding: 15px 15px;
+}
+
+.price-separator {
+    width: 306px;
+    border-right: 2px solid #D0D0D0;
+    font-weight: 400;
+    padding: 15px 0;
+}
+
+.price-red {
+    position: relative;
+    margin-right: 5.5px;
+}
+
+.price-red::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    border-top: 2px solid #F54932;
+}
+
+.price__descr {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: #3057A2;
+}
+
+/* stages */
+
+
+.stages__container {
+    margin-bottom: 200px;
+}
+
+.stages__title {
+    max-width: 806px;
+    margin-bottom: 54px;
+}
+
+.stages__title-descr {
+    margin-left: 7px;
+    display: inline-block;
+    max-width: 280px;
+    font-family: "Golos Text", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: #3057A2;
+    text-transform: none;
+}
+
+.stages__list {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Три колонки */
+    grid-template-rows: 112px 112px 136px;
+    /* Три строки, высота каждой строки 112px */
+    gap: 20px;
+    /* Отступы между блоками */
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.stages__item {
+    padding: 20px;
+    background-color: #f0f0f0;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    font-size: 24px;
+    background-image: url('/img/paper.png');
+    background-size: cover;
+}
+
+.stages__number {
+    padding: 5px 12px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: center;
+}
+
+.stages__descr {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: left;
+}
+
+.stages__item-third {
+    grid-row: span 2;
+    /* Занимает две строки */
+}
+
+.stages__item-sixth {
+    height: 136px;
+}
+
+.stages__item-seventh {
+    grid-column: span 2;
+    /* Занимает две колонки */
+}
+
+.stages__descr-seventh {
+    max-width: 446px;
+}
+
+.stages__plane {
+    position: absolute;
+    right: -63px;
+    bottom: -3px;
+}
+
+/* participants */
+
+.participants__container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.participants__title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.participants__navigation {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.participants__btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.participants__wrapper {
+    width: 100%;
+}
+
+.participants__wrapper .participants__carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 3) - 20px);
+    gap: 20px;
+    padding: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: 0;
+}
+
+.participants__carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.participants__carousel :where(.participants__card) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.participants__carousel.no-transition {
+    scroll-behavior: auto;
+}
+
+.participants__carousel.dragging {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+
+.participants__carousel.dragging .participants__card {
+    cursor: grab;
+    user-select: none;
+}
+
+.participants__carousel .participants__card {
+    scroll-snap-align: start;
+    max-width: 394px;
+    max-height: 462px;
+    box-sizing: border-box;
+    /* padding: 10px; */
+    text-align: center;
+    cursor: pointer;
+    /* flex: 0 0 33.33%;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center; */
+}
+
+.participants__img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.participants__name {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.participants__rank {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.participants__more {
+    padding: 5px 10px;
+    border: 1px solid #000;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* footer */
+
+.footer__container {
+    background-color: #E9DED4;
+    padding-top: 40px;
+    padding-bottom: 72px;
+}
+
+.footer__descr {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+
+}
