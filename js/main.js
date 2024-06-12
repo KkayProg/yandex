@@ -4,25 +4,23 @@ document.addEventListener("DOMContentLoaded", function () {
     const containerWidth = marqueeContent.parentElement.offsetWidth;
     const contentWidth = marqueeContent.offsetWidth;
 
-
     const duration = (contentWidth + containerWidth) / 100;
     marqueeContent.style.animationDuration = `${duration}s`;
     marqueeContentFooter.style.animationDuration = `${duration}s`;
 
-
-
     // slider
-
     const wrapper = document.querySelector('.participants__wrapper');
     const carousel = document.querySelector('.participants__carousel');
     const arrowBtns = document.querySelectorAll('.participants__navigation button');
     const firstCardWidth = carousel.querySelector('.participants__card').offsetWidth;
-    const carouselChildrens = [...carousel.children]
+    const carouselChildrens = [...carousel.children];
+    let counerSpan = document.querySelector('.participants__navigation__span-start');
+    let couner = 1;
 
     let isDragging = false,
         startX, startScrollLeft, timeoutId;
 
-    let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth)
+    let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
 
     carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
         carousel.insertAdjacentHTML('afterbegin', card.outerHTML);
@@ -32,34 +30,50 @@ document.addEventListener("DOMContentLoaded", function () {
         carousel.insertAdjacentHTML('beforeend', card.outerHTML);
     });
 
+    const updateCounter = () => {
+        const scrollLeft = carousel.scrollLeft;
+        const slideWidth = firstCardWidth;
+
+        const currentIndex = Math.round(scrollLeft / slideWidth);
+        couner = ((currentIndex + cardPerView) % 6) + 1;
+
+        counerSpan.textContent = couner;
+    };
+
+    carousel.scrollLeft = firstCardWidth * cardPerView;
+    updateCounter();
+
     arrowBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             carousel.scrollLeft += btn.id === 'left' ? -firstCardWidth : firstCardWidth;
+            setTimeout(updateCounter, 300);
         });
     });
 
     const dragStart = (e) => {
         isDragging = true;
         carousel.classList.add('dragging');
-        // записывает начальное положение курсора и прокрутки карусели
         startX = e.pageX;
         startScrollLeft = carousel.scrollLeft;
-    }
+    };
 
     const dragging = (e) => {
         if (!isDragging) return;
-        // обновляет положение прокрутки карусели в зависимости от перемещения курсора
         carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
-    }
+    };
 
     const dragStop = () => {
         isDragging = false;
         carousel.classList.remove('dragging');
-    }
+        updateCounter();
+    };
 
     const autoPlay = () => {
-        timeoutId = setTimeout(() => carousel.scrollLeft += firstCardWidth, 4000);
-    }
+        timeoutId = setTimeout(() => {
+            carousel.scrollLeft += firstCardWidth;
+            updateCounter();
+        }, 4000);
+    };
     autoPlay();
 
     const infiniteScroll = () => {
@@ -74,8 +88,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         clearTimeout(timeoutId);
-        if(!wrapper.matches(':hover')) autoPlay();
-    }
+        if (!wrapper.matches(':hover')) autoPlay();
+        updateCounter();
+    };
 
     carousel.addEventListener('mousedown', dragStart);
     carousel.addEventListener('mousemove', dragging);
@@ -83,83 +98,131 @@ document.addEventListener("DOMContentLoaded", function () {
     carousel.addEventListener('scroll', infiniteScroll);
     wrapper.addEventListener('mouseenter', () => clearTimeout(timeoutId));
     wrapper.addEventListener('mouseleave', autoPlay);
+
+
+
+
+
+    const stagesWrapper = document.querySelector('.stages');
+const stagesContainer = stagesWrapper.querySelector('.stages__list');
+const stagesItems = Array.from(stagesWrapper.querySelectorAll('.stages__item'));
+const arrowsLeft = stagesWrapper.querySelector('.stages-arrows-left');
+const arrowsRight = stagesWrapper.querySelector('.stages-arrows-right');
+const dotsContainer = stagesWrapper.querySelector('.stages-dots');
+
+let currentSlide = 0;
+const slideWidth = 335;
+const gap = 20;
+
+const isMobile = () => window.innerWidth <= 938;
+
+const getTotalSlides = () => {
+    if (isMobile()) {
+        return Math.ceil((stagesItems.length - 2) / 2) + 2; // Корректируем количество слайдов для мобильной версии
+    }
+    return stagesItems.length;
+};
+
+const updateSlidePosition = () => {
+    if (isMobile()) {
+        const combinedWidth = slideWidth + gap;
+        const offset = currentSlide * combinedWidth;
+
+        stagesContainer.style.transform = `translateX(-${offset}px)`;
+
+        stagesItems.forEach(item => {
+            item.style.width = `${slideWidth}px`;
+            item.style.marginRight = `${gap}px`;
+        });
+
+        stagesContainer.style.width = `${getTotalSlides() * combinedWidth - gap}px`;
+    } else {
+        stagesContainer.style.transform = 'none';
+        stagesItems.forEach(item => {
+            item.style.width = '';
+            item.style.marginRight = '';
+        });
+        stagesContainer.style.width = '';
+    }
+    updateDots();
+    updateArrows();
+};
+
+const updateDots = () => {
+    dotsContainer.querySelectorAll('.dot').forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+    });
+};
+
+const updateArrows = () => {
+    const totalSlides = getTotalSlides();
+    arrowsLeft.disabled = currentSlide === 0;
+    arrowsRight.disabled = currentSlide === totalSlides - 1;
+
+    if (arrowsLeft.disabled) {
+        arrowsLeft.style.cursor = 'default';
+        arrowsLeft.style.backgroundColor = 'rgb(214, 214, 214)';
+    } else {
+        arrowsLeft.style.cursor = 'pointer';
+        arrowsLeft.style.backgroundColor = '';
+    }
+
+    if (arrowsRight.disabled) {
+        arrowsRight.style.cursor = 'default';
+        arrowsRight.style.backgroundColor = 'rgb(214, 214, 214)';
+    } else {
+        arrowsRight.style.cursor = 'pointer';
+        arrowsRight.style.backgroundColor = '';
+    }
+};
+
+const goToSlide = (index) => {
+    const totalSlides = getTotalSlides();
+    if (index < 0) {
+        currentSlide = 0;
+    } else if (index >= totalSlides) {
+        currentSlide = totalSlides - 1;
+    } else {
+        currentSlide = index;
+    }
+    updateSlidePosition();
+};
+
+// Initialize dots
+const initializeDots = () => {
+    dotsContainer.innerHTML = '';
+    const totalSlides = getTotalSlides();
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('button');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+    }
+};
+
+arrowsLeft.addEventListener('click', () => {
+    if (currentSlide > 0) {
+        currentSlide--;
+        updateSlidePosition();
+    }
 });
 
+arrowsRight.addEventListener('click', () => {
+    if (currentSlide < getTotalSlides() - 1) {
+        currentSlide++;
+        updateSlidePosition();
+    }
+});
+
+window.addEventListener('resize', () => {
+    initializeDots();
+    updateSlidePosition();
+});
+
+// Initial setup
+initializeDots();
+updateSlidePosition();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // slider
-// const slideList = document.querySelector('.participants__list');
-// const slides = Array.from(document.querySelectorAll('.participants__item'));
-// const slideWidth = 100 / 3; // Ширина одного слайда (3 элемента видны)
-// const totalSlides = slides.length;
-
-
-
-// // Устанавливаем начальную позицию
-// let currentIndex = 0;
-// slideList.style.transition = 'none';
-// slideList.style.transform = `translateX(${-currentIndex * slideWidth}%)`;
-
-// function nextSlide() {
-//     currentIndex += 1;
-//     slideList.style.transition = 'transform 0.5s ease';
-//     slideList.style.transform = `translateX(${-currentIndex * slideWidth}%)`;
-
-//     // Проверяем, достигли ли конца слайдера
-//     if (currentIndex === 3 ) {
-//         setTimeout(() => {
-//             slideList.style.transition = 'transform 0.5s ease';
-//             currentIndex = 0;
-//             slideList.style.transform = `translateX(${-currentIndex * slideWidth}%)`;
-//         }, 500);
-//     }
-// }
-
-// function prevSlide() {
-//     currentIndex -= 1;
-//     slideList.style.transition = 'transform 0.5s ease';
-//     slideList.style.transform = `translateX(${-currentIndex * slideWidth}%)`;
-
-//     // Проверяем, достигли ли начала слайдера
-//     if (currentIndex === -1 || currentIndex === totalSlides - 1) {
-//         setTimeout(() => {
-//             slideList.style.transition = 'none';
-//             currentIndex = totalSlides * 2 - 1;
-//             slideList.style.transform = `translateX(${-currentIndex * slideWidth}%)`;
-//         }, 500);
-//     }
-// }
-
-// const prevBtn = document.querySelector('.participants__btn.prev');
-// const nextBtn = document.querySelector('.participants__btn.next');
-
-// nextBtn.addEventListener('click', nextSlide);
-// prevBtn.addEventListener('click', prevSlide);
-
-// setInterval(nextSlide, 4000); // Менять слайд каждые 4 секунды
+});

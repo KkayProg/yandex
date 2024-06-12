@@ -205,7 +205,7 @@ p {
     display: flex;
     align-items: center;
     gap: 64px;
-    margin-bottom: 64px;
+    margin-bottom: 61px;
 }
 
 .lection__title {
@@ -216,6 +216,11 @@ p {
     line-height: 48.6px;
     text-align: left;
     text-transform: uppercase;
+}
+
+.lection__title__offset-element b {
+    color: #F54932;
+    font-weight: 700;
 }
 
 /* price */
@@ -244,7 +249,7 @@ p {
     line-height: 48.6px;
     text-align: left;
     text-transform: uppercase;
-    margin-bottom: 48px;
+    margin-bottom: 46px;
 }
 
 table {
@@ -260,6 +265,10 @@ td {
     line-height: 24px;
     text-align: left;
     padding: 15px 15px;
+}
+
+.price__main {
+    z-index: 10;
 }
 
 .price-separator {
@@ -296,11 +305,12 @@ td {
 
 .stages__container {
     margin-bottom: 200px;
+    position: relative;
 }
 
 .stages__title {
     max-width: 806px;
-    margin-bottom: 54px;
+    margin-bottom: 55px;
 }
 
 .stages__title-descr {
@@ -320,14 +330,12 @@ td {
     position: relative;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* Три колонки */
     grid-template-rows: 112px 112px 136px;
-    /* Три строки, высота каждой строки 112px */
     gap: 20px;
-    /* Отступы между блоками */
     width: 100%;
     padding: 0;
     margin: 0;
+    transition: transform 0.5s ease;
 }
 
 .stages__item {
@@ -360,16 +368,10 @@ td {
 
 .stages__item-third {
     grid-row: span 2;
-    /* Занимает две строки */
-}
-
-.stages__item-sixth {
-    height: 136px;
 }
 
 .stages__item-seventh {
     grid-column: span 2;
-    /* Занимает две колонки */
 }
 
 .stages__descr-seventh {
@@ -379,31 +381,47 @@ td {
 .stages__plane {
     position: absolute;
     right: -63px;
-    bottom: -3px;
+    bottom: -2px;
 }
+
+.stages-arrows {
+    display: none;
+}
+
+.stages-dots {
+    display: none;
+}
+
 
 /* participants */
 
-.participants__container {
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
+.participants {
+    margin-bottom: 140px;
 }
 
 .participants__title {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
 }
 
 .participants__navigation {
     position: absolute;
     top: 10px;
-    right: 0px;
+    right: -6px;
     display: flex;
     align-items: center;
     text-align: center;
     margin-bottom: 20px;
+}
+
+.participants__navigation span {
+    margin-top: -8px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+}
+
+.participants__navigation__span-start {
+    margin-right: 2px;
 }
 
 .participants__btn {
@@ -413,6 +431,14 @@ td {
     cursor: pointer;
 }
 
+.participants__btn:first-child {
+    margin-right: 8px;
+}
+
+.participants__btn:last-child {
+    margin-left: 11px;
+}
+
 .participants__wrapper {
     width: 100%;
 }
@@ -420,7 +446,7 @@ td {
 .participants__wrapper .participants__carousel {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: calc((100% / 3) - 20px);
+    grid-auto-columns: calc((100% / 3) - 13px);
     gap: 20px;
     padding: 0;
     overflow-x: auto;
@@ -457,7 +483,6 @@ td {
 .participants__carousel .participants__card {
     scroll-snap-align: start;
     max-width: 394px;
-    max-height: 462px;
     box-sizing: border-box;
     /* padding: 10px; */
     text-align: center;
@@ -471,25 +496,39 @@ td {
 .participants__img {
     max-width: 100%;
     height: auto;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 .participants__name {
-    font-size: 18px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28.8px;
     margin-bottom: 5px;
 }
 
 .participants__rank {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-bottom: 20px;
 }
 
 .participants__more {
-    padding: 5px 10px;
-    border: 1px solid #000;
-    background-color: #fff;
+    padding: 7px 11px;
+    border: 1px solid #3057A2;
+    border-radius: 62px;
+    background-color: #FFFFFF;
+    color: #3057A2;
     cursor: pointer;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 18px;
+    transition: all .3s ease-in-out;
+}
+
+.participants__more:hover {
+    background-color: #3057A2;
+    color: #FFFFFF
 }
 
 /* footer */

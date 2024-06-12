@@ -9,9 +9,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&family=Merriweather:wght@400;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="icon" href="./img/favicon.png" type="image/png">
     <script src="js/main.js" defer></script>
-    <title>Document</title>
+    <title>The Four Horses Club</title>
 </head>
 
 <body>
@@ -37,7 +40,7 @@
                             Поддержать шахматную мысль
                         </button>
                         <button class="header__buttons__clear">
-                            Подробнее<br>о&nbsp;турнире
+                            Подробнее о&nbsp;турнире
                         </button>
                     </div>
                 </div>
@@ -53,12 +56,15 @@
     <main class="main">
         <section class="lection">
             <div class="lection__container container">
-                <div class="lection__title">
-                    Чтобы поддержать Международный васюкинский турнир посетите лекцию на&nbsp;тему: <span
-                        style="color: #F54932; font-weight: 700;">&laquo;Плодотворная
-                        дебютная идея&raquo;</span>
+                <h2 class="lection__title">
+                    <span class="lection__title__mobile">Чтобы поддержать <br> Международный васюкинский турнир</span>
+                    <span class="lection__title__offset-element">посетите лекцию на&nbsp;тему:
+                        <b>«Плодотворная дебютная идея»</b>
+                    </span>
+                </h2>
+                <div class="lection__img-contaienr">
+                    <img src="./img/lection.png" alt="">
                 </div>
-                <img src="./img/lection.png" alt="">
             </div>
         </section>
         <section class="price">
@@ -107,55 +113,80 @@
                     Этапы преображения Васюков
                     <span class="stages__title-descr">Будущие источники обогащения васюкинцев</span>
                 </div>
-                <ul class="stages__list">
-                    <li class="stages__item">
-                        <div class="stages__number">1</div>
-                        <p class="stages__descr">
-                            Строительство железнодорожной магистрали Москва-Васюки
-                        </p>
-                    </li>
-                    <li class="stages__item">
-                        <div class="stages__number">2</div>
-                        <p class="stages__descr">
-                            Открытие фешенебельной гостиницы &laquo;Проходная пешка&raquo; и&nbsp;других небоскрёбов
-                        </p>
-                    </li>
-                    <li class="stages__item stages__item-third">
-                        <div class="stages__number">3</div>
-                        <p class="stages__descr">
-                            Поднятие сельского хозяйства в&nbsp;радиусе на&nbsp;тысячу километров: производство овощей,
-                            фруктов, икры, шоколадных конфет
-                        </p>
-                    </li>
-                    <li class="stages__item">
-                        <div class="stages__number">4</div>
-                        <p class="stages__descr">
-                            Строительство дворца для турнира
-                        </p>
-                    </li>
-                    <li class="stages__item">
-                        <div class="stages__number">5</div>
-                        <p class="stages__descr">
-                            Размещение гаражей для гостевого автотранспорта
-                        </p>
-                    </li>
-                    <li class="stages__item stages__item-sixth">
-                        <div class="stages__number">6</div>
-                        <p class="stages__descr">
-                            Постройка сверхмощной радиостанции для передачи всему миру сенсационных результатов
-                        </p>
-                    </li>
-                    <li class="stages__item stages__item-seventh">
-                        <div class="stages__number">7</div>
-                        <p class="stages__descr stages__descr-seventh">
-                            Создание аэропорта &laquo;Большие Васюки&raquo; с&nbsp;регулярным отправлением почтовых
-                            самолётов и&nbsp;дирижаблей во&nbsp;все концы света, включая Лос-Анжелос и&nbsp;Мельбурн
-                        </p>
-                    </li>
-                </ul>
-                <img class="stages__plane" src="./img/plane.png" alt="">
+                <div class="stages__wrapper">
+                    <ul class="stages__list">
+                        <li class="stages__item">
+                            <div class="stages__number">1</div>
+                            <p class="stages__descr">
+                                Строительство железнодорожной магистрали Москва-Васюки
+                            </p>
+                        </li>
+                        <li class="stages__item">
+                            <div class="stages__number">2</div>
+                            <p class="stages__descr">
+                                Открытие фешенебельной гостиницы &laquo;Проходная пешка&raquo; и&nbsp;других небоскрёбов
+                            </p>
+                        </li>
+                        <li class="stages__item stages__item-third">
+                            <div class="stages__number">3</div>
+                            <p class="stages__descr">
+                                Поднятие сельского хозяйства в&nbsp;радиусе на&nbsp;тысячу километров: производство
+                                овощей,
+                                фруктов, икры, шоколадных конфет
+                            </p>
+                        </li>
+                        <li class="stages__item">
+                            <div class="stages__number">4</div>
+                            <p class="stages__descr">
+                                Строительство дворца для турнира
+                            </p>
+                        </li>
+                        <li class="stages__item">
+                            <div class="stages__number">5</div>
+                            <p class="stages__descr">
+                                Размещение гаражей для гостевого автотранспорта
+                            </p>
+                        </li>
+                        <li class="stages__item stages__item-sixth">
+                            <div class="stages__number">6</div>
+                            <p class="stages__descr">
+                                Постройка сверхмощной радиостанции для передачи всему миру сенсационных результатов
+                            </p>
+                        </li>
+                        <li class="stages__item stages__item-seventh">
+                            <div class="stages__number">7</div>
+                            <p class="stages__descr stages__descr-seventh">
+                                Создание аэропорта &laquo;Большие Васюки&raquo; с&nbsp;регулярным отправлением почтовых
+                                самолётов и&nbsp;дирижаблей во&nbsp;все концы света, включая Лос-Анжелос и&nbsp;Мельбурн
+                            </p>
+                        </li>
+                    </ul>
+                    <img class="stages__plane" src="./img/plane.png" alt="">
+                    <div class="stages__navigation">
+                        <div class="stages-arrows">
+                            <button class="stages-arrows-left">
+                                <svg width="10" height="18" viewBox="0 0 10 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.07664 15.923L1.15357 8.9999L8.07664 2.07682" stroke="white"
+                                        stroke-width="1.63636" stroke-linecap="square"></path>
+                                </svg>
+                            </button>
+                            <button class="stages-arrows-right">
+                                <svg width="10" height="18" viewBox="0 0 10 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.92336 2.0769L8.84644 8.99998L1.92336 15.9231" stroke="white"
+                                        stroke-width="1.63636" stroke-linecap="square"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="stages-dots"></div>
+                    </div>
+                </div>
             </div>
         </section>
+
+
+
         <section class="participants">
             <div class="participants__container container">
                 <div class="participants__title title">
@@ -209,8 +240,8 @@
                                 stroke-linecap="square" />
                         </svg>
                     </button>
-                    <span>1</span>
-                    <span>/6</span>
+                    <span class="participants__navigation__span-start">1</span>
+                    <span class="participants__navigation__span-end">/ 6</span>
                     <button id="right" class="participants__btn">
                         <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="22" cy="22" r="22" fill="#313131" />
