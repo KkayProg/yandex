@@ -226,8 +226,8 @@
     }
 
     .stages-dots {
+        gap: 4px;
         position: absolute;
-        display: block;
         min-width: 74px;
         top: 50%;
         left: 50%;
@@ -251,9 +251,6 @@
         transition: all .3s ease-in-out;
     }
 
-    .dot:not(:last-child) {
-        margin-right: 4px;
-    }
 
     .dot.active {
         background: #313131;
