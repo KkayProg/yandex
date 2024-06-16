@@ -19,7 +19,7 @@ a {
 }
 
 .span,
-p {
+p, h2 {
     margin: 0;
 }
 
@@ -255,7 +255,7 @@ p {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 30px;
+    margin-bottom: 32px;
 }
 
 td {
@@ -405,7 +405,7 @@ td {
 
 .participants__navigation {
     position: absolute;
-    top: 10px;
+    top: 8px;
     right: -6px;
     display: flex;
     align-items: center;
@@ -414,7 +414,7 @@ td {
 }
 
 .participants__navigation span {
-    margin-top: -8px;
+    margin-top: -6px;
     font-size: 16px;
     font-weight: 400;
     line-height: 19.2px;
@@ -496,7 +496,7 @@ td {
 .participants__img {
     max-width: 100%;
     height: auto;
-    margin-bottom: 30px;
+    margin-bottom: 28px;
 }
 
 .participants__name {
@@ -514,13 +514,13 @@ td {
 }
 
 .participants__more {
-    padding: 7px 11px;
+    padding: 8px 11px;
     border: 1px solid #3057A2;
     border-radius: 62px;
     background-color: #FFFFFF;
     color: #3057A2;
     cursor: pointer;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 18px;
     transition: all .3s ease-in-out;

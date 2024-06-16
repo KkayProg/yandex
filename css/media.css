@@ -63,6 +63,10 @@
         flex-direction: column;
     }
 
+    .header__main {
+        margin-bottom: 83px;
+    }
+
     .header__buttons__black,
     .header__buttons__clear {
         font-size: 16px;
@@ -96,6 +100,11 @@
 
     .participants__wrapper .participants__carousel {
         grid-auto-columns: calc((100% / 2) - 13px);
+    }
+
+    .stages__descr {
+        font-size: 18px;
+        line-height: 21.6px;
     }
 
     .stages__plane {
@@ -204,4 +213,92 @@
     }
 }
 
-@media (max-width:768px) {}
+@media (max-width:576px) {
+    .header__title {
+        font-size: 36px;
+        line-height: 39.6px;
+    }
+
+    .header__container {
+        position: relative;
+        overflow: hidden;
+        background-image: url(../img/chessMob.png);
+        background-size: auto;
+        background-position: right -110px bottom 17px
+    }
+
+    .header__iconText {
+        font-size: 14.42px;
+        line-height: 15.57px;
+        text-align: left;
+        margin-top: -2px;
+    }
+
+    .header__icon {
+        padding-top: 20px;
+        margin-bottom: 40px;
+    }
+
+    .header__title__secons-span {
+        margin-left: 64px;
+    }
+
+    .header__title__third-span {
+        margin-left: 30px;
+    }
+
+    .header__descr {
+        text-align: left;
+        margin-bottom: 32px;
+    }
+
+    .header__buttons {
+        gap: 14px;
+    }
+
+    .marquee-container {
+        height: 38px;
+    }
+
+    .marquee-content {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 17.6px;
+    }
+
+    .header__main {
+        margin-bottom: 291px;
+    }
+
+    .header__buttons__black,
+    .header__buttons__clear {
+        width: 100%;
+        padding: 11px 20px;
+    }
+
+    .header__buttons__clear {
+        background-color: #FFFFFF;
+        opacity: 0.9;
+        border: 2px solid #FFFFFF;
+    }
+
+    .header {
+        margin-bottom: 49px;
+    }
+
+    .lection__title {
+        line-height: 37.9px;
+    }
+
+    .lection__container {
+        gap: 23px;
+    }
+
+    .price__img-position {
+        left: -19px;
+        top: -46px;
+        width: auto;
+    }
+}
+
+@media (max-width:425px) {}
