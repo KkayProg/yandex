@@ -252,45 +252,60 @@ p, h2 {
     margin-bottom: 46px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 32px;
+
+/* //////// */
+
+
+.tournament-info__list {
+    display: grid;
+    grid-template-columns: 0.76fr 1fr;
+    grid-gap: 0px;
+    grid-auto-rows: min-content;
+    margin-bottom: 48px;
+    width: 704px;
 }
 
-td {
+.tournament-list-title,.tournament-list-info {
+    padding: 16px 0px 14px 0px;
     border-bottom: 2px solid #D0D0D0;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 24px;
-    text-align: left;
-    padding: 15px 15px;
+    white-space: nowrap;
 }
+
+.tournament-list-info {
+    padding-left: 16px;
+    font-weight: 600;
+}
+
+.tournament-list-title {
+    padding-right: 16px;
+    opacity: 70%;
+    border-right: 2px solid #D0D0D0;
+}
+
+.tournament-list-title:first-child,.tournament-list-info:nth-child(2) {
+    padding-top: 0px;
+}
+
+.tournament-list-title:nth-child(9),.tournament-list-info:last-child {
+    padding-bottom: 0px;
+    border-bottom: none;
+}
+
+.tournament-list-info__red-line {
+    text-decoration:line-through red;
+}
+.common-text {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+}
+/* //////// */
+
 
 .price__main {
     z-index: 10;
 }
 
-.price-separator {
-    width: 306px;
-    border-right: 2px solid #D0D0D0;
-    font-weight: 400;
-    padding: 15px 0;
-}
-
-.price-red {
-    position: relative;
-    margin-right: 5.5px;
-}
-
-.price-red::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 100%;
-    border-top: 2px solid #F54932;
-}
 
 .price__descr {
     font-size: 20px;
