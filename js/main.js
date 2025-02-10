@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Анимация бегущей строки
     const marqueeContent = document.getElementById('marquee-content');
     const marqueeContentFooter = document.getElementById('marquee-content-footer');
     const containerWidth = marqueeContent.parentElement.offsetWidth;
@@ -12,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         marqueeContentFooter.style.animationDuration = `${duration}s`;
     }
 
-    // slider
+    // Настройка карусели участников
     const wrapper = document.querySelector('.participants__wrapper');
     const carousel = document.querySelector('.participants__carousel');
     const arrowBtns = document.querySelectorAll('.participants__navigation button');
@@ -26,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
 
+    // Реализация бесконечной прокрутки
     carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
         carousel.insertAdjacentHTML('afterbegin', card.outerHTML);
     });
@@ -34,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
         carousel.insertAdjacentHTML('beforeend', card.outerHTML);
     });
 
+    // Обновляем отображение счётчика
     const updateCounter = () => {
         const scrollLeft = carousel.scrollLeft;
         const slideWidth = firstCardWidth;
@@ -44,9 +47,11 @@ document.addEventListener("DOMContentLoaded", function () {
         counerSpan.textContent = couner;
     };
 
+    // Начальная позиция прокрутки
     carousel.scrollLeft = firstCardWidth * cardPerView;
     updateCounter();
 
+    // Обработчики событий для кнопок стрелок
     arrowBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             carousel.scrollLeft += btn.id === 'left' ? -firstCardWidth : firstCardWidth;
@@ -54,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // Начало перетаскивания
     const dragStart = (e) => {
         isDragging = true;
         carousel.classList.add('dragging');
@@ -61,17 +67,20 @@ document.addEventListener("DOMContentLoaded", function () {
         startScrollLeft = carousel.scrollLeft;
     };
 
+    // Перетаскивание
     const dragging = (e) => {
         if (!isDragging) return;
         carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
     };
 
+    // Остановка перетаскивания
     const dragStop = () => {
         isDragging = false;
         carousel.classList.remove('dragging');
         updateCounter();
     };
 
+    // Автоматическая прокрутка
     const autoPlay = () => {
         timeoutId = setTimeout(() => {
             carousel.scrollLeft += firstCardWidth;
@@ -80,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     autoPlay();
 
+    // Бесконечная прокрутка
     const infiniteScroll = () => {
         if (carousel.scrollLeft === 0) {
             carousel.classList.add('no-transition');
@@ -96,6 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
         updateCounter();
     };
 
+    // События для перетаскивания и бесконечной прокрутки
     carousel.addEventListener('mousedown', dragStart);
     carousel.addEventListener('mousemove', dragging);
     document.addEventListener('mouseup', dragStop);
@@ -103,10 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
     wrapper.addEventListener('mouseenter', () => clearTimeout(timeoutId));
     wrapper.addEventListener('mouseleave', autoPlay);
 
-
-
-
-
+    // Настройка секции "этапы"
     const stagesWrapper = document.querySelector('.stages');
     const stagesContainer = stagesWrapper.querySelector('.stages__list');
     const stagesItems = Array.from(stagesWrapper.querySelectorAll('.stages__item'));
@@ -227,6 +235,5 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initial setup
     initializeDots();
     updateSlidePosition();
-
 
 });

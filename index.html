@@ -24,7 +24,7 @@
                 <div class="header__icon">
                     <picture>
                         <source srcset="./img/fourHorsesMob.svg" media="(max-width: 576px)">
-                        <img src="./img/fourHorses.svg" alt="">
+                        <img src="./img/fourHorses.svg" alt="Иконка 4 коня">
                     </picture>
                     <div class="header__iconText">Клуб<br>четырех коней</div>
                 </div>
@@ -39,12 +39,12 @@
                         по&nbsp;шахматам
                     </div>
                     <div class="header__buttons">
-                        <button class="header__buttons__black">
+                        <a href="#lection" aria-label="Поддержать шахматную мысль" class="header__buttons__black">
                             Поддержать шахматную мысль
-                        </button>
-                        <button class="header__buttons__clear">
+                        </a>
+                        <a href="#price" aria-label="Подробнее о турнире" class="header__buttons__clear">
                             Подробнее о&nbsp;турнире
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
         </div>
     </header>
     <main class="main">
-        <section class="lection">
+        <section id="lection" class="lection">
             <div class="lection__container container">
                 <h2 class="lection__title">
                     <span class="lection__title__mobile">Чтобы поддержать <br> Международный васюкинский турнир</span>
@@ -68,36 +68,36 @@
                 <div class="lection__img-contaienr">
                     <picture>
                         <source srcset="./img/lectionMob.png" media="(max-width: 576px)">
-                        <img src="./img/lection.png" alt="">
+                        <img src="./img/lection.png" alt="Люди играющие в шахматы">
                     </picture>
 
                 </div>
             </div>
         </section>
-        <section class="price">
+        <section id="price" class="price">
             <div class="price__container container">
                 <div class="price__img">
                     <picture>
                         <source srcset="./img/priceMob.png" media="(max-width: 576px)">
-                        <img class="price__img-position" src="./img/price.png" alt="">
+                        <img class="price__img-position" src="./img/price.png" alt="Мужчина играет в шахматы">
                     </picture>
                 </div>
                 <div class="price__main">
-                    <div class="price__title">
+                    <h2 class="price__title">
                         и&nbsp;Сеанс <span style="color: #F54932; font-weight: 700;">одновременной игры в&nbsp;шахматы
                             на&nbsp;160 досках</span> гроссмейстера О.&nbsp;Бендера
-                    </div>
-                    <ul class="tournament-info__list">
-                        <li class="tournament-list-title common-text">Место проведения:</li>
-                        <li class="tournament-list-info common-text">Клуб &laquo;Картонажник&raquo;</li>
-                        <li class="tournament-list-title common-text">Дата и время мероприятия:</li>
-                        <li class="tournament-list-info common-text">22 июня 1927 г. в 18:00</li>
-                        <li class="tournament-list-title common-text">Стоимость входных билетов:</li>
-                        <li class="tournament-list-info common-text">20 коп.</li>
-                        <li class="tournament-list-title common-text">Плата за игру:</li>
-                        <li class="tournament-list-info common-text">50 коп.</li>
-                        <li class="tournament-list-title common-text">Взнос на телеграммы:</li>
-                        <li class="tournament-list-info common-text"><span class="tournament-list-info__red-line">100
+                    </h2>
+                    <ul class="price__info__list">
+                        <li class="price__list-title common-text">Место проведения:</li>
+                        <li class="price__list-info common-text">Клуб &laquo;Картонажник&raquo;</li>
+                        <li class="price__list-title common-text">Дата и время мероприятия:</li>
+                        <li class="price__list-info common-text">22 июня 1927 г. в 18:00</li>
+                        <li class="price__list-title common-text">Стоимость входных билетов:</li>
+                        <li class="price__list-info common-text">20 коп.</li>
+                        <li class="price__list-title common-text">Плата за игру:</li>
+                        <li class="price__list-info common-text">50 коп.</li>
+                        <li class="price__list-title common-text">Взнос на телеграммы:</li>
+                        <li class="price__list-info common-text"><span class="price__list-info__red-line">100
                                 руб.</span>&nbsp; 21 руб. 16 коп.</li>
                     </ul>
                     <p class="price__descr">
@@ -108,10 +108,10 @@
         </section>
         <section class="stages">
             <div class="stages__container container">
-                <div class="stages__title title">
+                <h2 class="stages__title title">
                     Этапы преображения Васюков
                     <span class="stages__title-descr">Будущие источники обогащения васюкинцев</span>
-                </div>
+                </h2>
                 <div class="stages__wrapper">
                     <ul class="stages__list">
                         <li class="stages__item">
@@ -161,19 +161,19 @@
                         </li>
                     </ul>
                     <picture>
-                        <source srcset="./img/planeMob.png" media="(max-width: 576px)">
-                        <img class="stages__plane" src="./img/plane.png" alt="">
+                        <source srcset="./img/planeMob.png" media="(max-width: 600px)">
+                        <img class="stages__plane" src="./img/plane.png" alt="Самолет">
                     </picture>
                     <div class="stages__navigation">
                         <div class="stages-arrows">
-                            <button class="stages-arrows-left">
+                            <button aria-label="Назад" class="stages-arrows-left">
                                 <svg width="10" height="18" viewBox="0 0 10 18" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path d="M8.07664 15.923L1.15357 8.9999L8.07664 2.07682" stroke="white"
                                         stroke-width="1.63636" stroke-linecap="square"></path>
                                 </svg>
                             </button>
-                            <button class="stages-arrows-right">
+                            <button aria-label="Вперед" class="stages-arrows-right">
                                 <svg width="10" height="18" viewBox="0 0 10 18" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1.92336 2.0769L8.84644 8.99998L1.92336 15.9231" stroke="white"
@@ -189,69 +189,69 @@
 
         <section class="participants">
             <div class="participants__container container">
-                <div class="participants__title title">
+                <h2 class="participants__title title">
                     Участники турнира
-                </div>
+                </h2>
                 <div class="participants__wrapper">
                     <ul class="participants__carousel">
                         <li class="participants__card">
                             <picture>
                                 <source srcset="./img/avatarMob.png" media="(max-width: 576px)">
-                                <img src="./img/avatar.png" alt="avatar" class="participants__img" draggable="false">
+                                <img src="./img/avatar.png" alt="Фото участника" class="participants__img" draggable="false">
                             </picture>
                             <div class="participants__name">Хозе-Рауль Капабланка</div>
                             <div class="participants__rank">Чемпион мира по&nbsp;шахматам</div>
-                            <button class="participants__more">Подробнее</button>
+                            <button aria-label="Подробнее" class="participants__more">Подробнее</button>
                         </li>
                         <li class="participants__card">
                             <picture>
                                 <source srcset="./img/avatarMob.png" media="(max-width: 576px)">
-                                <img src="./img/avatar.png" alt="avatar" class="participants__img" draggable="false">
+                                <img src="./img/avatar.png" alt="Фото участника" class="participants__img" draggable="false">
                             </picture>
                             <div class="participants__name">Эммануил Ласкер</div>
                             <div class="participants__rank">Чемпион мира по&nbsp;шахматам</div>
-                            <button class="participants__more">Подробнее</button>
+                            <button aria-label="Подробнее" class="participants__more">Подробнее</button>
                         </li>
                         <li class="participants__card">
                             <picture>
                                 <source srcset="./img/avatarMob.png" media="(max-width: 576px)">
-                                <img src="./img/avatar.png" alt="avatar" class="participants__img" draggable="false">
+                                <img src="./img/avatar.png" alt="Фото участника" class="participants__img" draggable="false">
                             </picture>
                             <div class="participants__name">Александр Алехин</div>
                             <div class="participants__rank">Чемпион мира по&nbsp;шахматам</div>
-                            <button class="participants__more">Подробнее</button>
+                            <button aria-label="Подробнее" class="participants__more">Подробнее</button>
                         </li>
                         <li class="participants__card">
                             <picture>
                                 <source srcset="./img/avatarMob.png" media="(max-width: 576px)">
-                                <img src="./img/avatar.png" alt="avatar" class="participants__img" draggable="false">
+                                <img src="./img/avatar.png" alt="Фото участника" class="participants__img" draggable="false">
                             </picture>
                             <div class="participants__name">Арон Нимцович</div>
                             <div class="participants__rank">Чемпион мира по&nbsp;шахматам</div>
-                            <button class="participants__more">Подробнее</button>
+                            <button aria-label="Подробнее" class="participants__more">Подробнее</button>
                         </li>
                         <li class="participants__card">
                             <picture>
                                 <source srcset="./img/avatarMob.png" media="(max-width: 576px)">
-                                <img src="./img/avatar.png" alt="avatar" class="participants__img" draggable="false">
+                                <img src="./img/avatar.png" alt="Фото участника" class="participants__img" draggable="false">
                             </picture>
                             <div class="participants__name">Рихард Рети</div>
                             <div class="participants__rank">Чемпион мира по&nbsp;шахматам</div>
-                            <button class="participants__more">Подробнее</button>
+                            <button aria-label="Подробнее" class="participants__more">Подробнее</button>
                         </li>
                         <li class="participants__card">
                             <picture>
                                 <source srcset="./img/avatarMob.png" media="(max-width: 576px)">
-                                <img src="./img/avatar.png" alt="avatar" class="participants__img" draggable="false">
+                                <img src="./img/avatar.png" alt="Фото участника" class="participants__img" draggable="false">
                             </picture>
                             <div class="participants__name">Остап Бендер</div>
                             <div class="participants__rank">Гроссмейстер</div>
-                            <button class="participants__more">Подробнее</button>
+                            <button aria-label="Подробнее" class="participants__more">Подробнее</button>
                         </li>
                     </ul>
                 </div>
                 <div class="participants__navigation">
-                    <button id="left" class="participants__btn">
+                    <button aria-label="Назад" id="left" class="participants__btn">
                         <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="22" cy="22" r="22" transform="rotate(-180 22 22)" fill="#313131" />
                             <path d="M24.5382 30.4615L16.0767 21.9999L24.5382 13.5384" stroke="white" stroke-width="2"
@@ -259,8 +259,8 @@
                         </svg>
                     </button>
                     <span class="participants__navigation__span-start">1</span>
-                    <span class="participants__navigation__span-end">/ 6</span>
-                    <button id="right" class="participants__btn">
+                    <span class="participants__navigation__span-end">/6</span>
+                    <button aria-label="Вперед" id="right" class="participants__btn">
                         <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="22" cy="22" r="22" fill="#313131" />
                             <path d="M19.4618 13.5384L27.9233 21.9999L19.4618 30.4615" stroke="white" stroke-width="2"
