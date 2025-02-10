@@ -4,9 +4,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const containerWidth = marqueeContent.parentElement.offsetWidth;
     const contentWidth = marqueeContent.offsetWidth;
 
-    const duration = (contentWidth + containerWidth) / 100;
+    const minDuration = 10;
+    const duration = Math.max((contentWidth + containerWidth) / 100, minDuration);
+    
     marqueeContent.style.animationDuration = `${duration}s`;
-    marqueeContentFooter.style.animationDuration = `${duration}s`;
+    if (marqueeContentFooter) {
+        marqueeContentFooter.style.animationDuration = `${duration}s`;
+    }
 
     // slider
     const wrapper = document.querySelector('.participants__wrapper');
@@ -104,125 +108,125 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     const stagesWrapper = document.querySelector('.stages');
-const stagesContainer = stagesWrapper.querySelector('.stages__list');
-const stagesItems = Array.from(stagesWrapper.querySelectorAll('.stages__item'));
-const arrowsLeft = stagesWrapper.querySelector('.stages-arrows-left');
-const arrowsRight = stagesWrapper.querySelector('.stages-arrows-right');
-const dotsContainer = stagesWrapper.querySelector('.stages-dots');
+    const stagesContainer = stagesWrapper.querySelector('.stages__list');
+    const stagesItems = Array.from(stagesWrapper.querySelectorAll('.stages__item'));
+    const arrowsLeft = stagesWrapper.querySelector('.stages-arrows-left');
+    const arrowsRight = stagesWrapper.querySelector('.stages-arrows-right');
+    const dotsContainer = stagesWrapper.querySelector('.stages-dots');
 
-let currentSlide = 0;
-const slideWidth = 335;
-const gap = 20;
+    let currentSlide = 0;
+    const slideWidth = 335;
+    const gap = 20;
 
-const isMobile = () => window.innerWidth <= 938;
+    const isMobile = () => window.innerWidth <= 938;
 
-const getTotalSlides = () => {
-    if (isMobile()) {
-        return Math.ceil((stagesItems.length - 2) / 2) + 2; // Корректируем количество слайдов для мобильной версии
-    }
-    return stagesItems.length;
-};
+    const getTotalSlides = () => {
+        if (isMobile()) {
+            return Math.ceil((stagesItems.length - 2) / 2) + 2; // Корректируем количество слайдов для мобильной версии
+        }
+        return stagesItems.length;
+    };
 
-const updateSlidePosition = () => {
-    if (isMobile()) {
-        const combinedWidth = slideWidth + gap;
-        const offset = currentSlide * combinedWidth;
+    const updateSlidePosition = () => {
+        if (isMobile()) {
+            const combinedWidth = slideWidth + gap;
+            const offset = currentSlide * combinedWidth;
 
-        stagesContainer.style.transform = `translateX(-${offset}px)`;
+            stagesContainer.style.transform = `translateX(-${offset}px)`;
 
-        stagesItems.forEach(item => {
-            item.style.width = `${slideWidth}px`;
-            item.style.marginRight = `${gap}px`;
+            stagesItems.forEach(item => {
+                item.style.width = `${slideWidth}px`;
+                item.style.marginRight = `${gap}px`;
+            });
+
+            stagesContainer.style.width = `${getTotalSlides() * combinedWidth - gap}px`;
+        } else {
+            stagesContainer.style.transform = 'none';
+            stagesItems.forEach(item => {
+                item.style.width = '';
+                item.style.marginRight = '';
+            });
+            stagesContainer.style.width = '';
+        }
+        updateDots();
+        updateArrows();
+    };
+
+    const updateDots = () => {
+        dotsContainer.querySelectorAll('.dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
         });
+    };
 
-        stagesContainer.style.width = `${getTotalSlides() * combinedWidth - gap}px`;
-    } else {
-        stagesContainer.style.transform = 'none';
-        stagesItems.forEach(item => {
-            item.style.width = '';
-            item.style.marginRight = '';
-        });
-        stagesContainer.style.width = '';
-    }
-    updateDots();
-    updateArrows();
-};
+    const updateArrows = () => {
+        const totalSlides = getTotalSlides();
+        arrowsLeft.disabled = currentSlide === 0;
+        arrowsRight.disabled = currentSlide === totalSlides - 1;
 
-const updateDots = () => {
-    dotsContainer.querySelectorAll('.dot').forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentSlide);
+        if (arrowsLeft.disabled) {
+            arrowsLeft.style.cursor = 'default';
+            arrowsLeft.style.backgroundColor = 'rgb(214, 214, 214)';
+        } else {
+            arrowsLeft.style.cursor = 'pointer';
+            arrowsLeft.style.backgroundColor = '';
+        }
+
+        if (arrowsRight.disabled) {
+            arrowsRight.style.cursor = 'default';
+            arrowsRight.style.backgroundColor = 'rgb(214, 214, 214)';
+        } else {
+            arrowsRight.style.cursor = 'pointer';
+            arrowsRight.style.backgroundColor = '';
+        }
+    };
+
+    const goToSlide = (index) => {
+        const totalSlides = getTotalSlides();
+        if (index < 0) {
+            currentSlide = 0;
+        } else if (index >= totalSlides) {
+            currentSlide = totalSlides - 1;
+        } else {
+            currentSlide = index;
+        }
+        updateSlidePosition();
+    };
+
+    // Initialize dots
+    const initializeDots = () => {
+        dotsContainer.innerHTML = '';
+        const totalSlides = getTotalSlides();
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+    };
+
+    arrowsLeft.addEventListener('click', () => {
+        if (currentSlide > 0) {
+            currentSlide--;
+            updateSlidePosition();
+        }
     });
-};
 
-const updateArrows = () => {
-    const totalSlides = getTotalSlides();
-    arrowsLeft.disabled = currentSlide === 0;
-    arrowsRight.disabled = currentSlide === totalSlides - 1;
+    arrowsRight.addEventListener('click', () => {
+        if (currentSlide < getTotalSlides() - 1) {
+            currentSlide++;
+            updateSlidePosition();
+        }
+    });
 
-    if (arrowsLeft.disabled) {
-        arrowsLeft.style.cursor = 'default';
-        arrowsLeft.style.backgroundColor = 'rgb(214, 214, 214)';
-    } else {
-        arrowsLeft.style.cursor = 'pointer';
-        arrowsLeft.style.backgroundColor = '';
-    }
-
-    if (arrowsRight.disabled) {
-        arrowsRight.style.cursor = 'default';
-        arrowsRight.style.backgroundColor = 'rgb(214, 214, 214)';
-    } else {
-        arrowsRight.style.cursor = 'pointer';
-        arrowsRight.style.backgroundColor = '';
-    }
-};
-
-const goToSlide = (index) => {
-    const totalSlides = getTotalSlides();
-    if (index < 0) {
-        currentSlide = 0;
-    } else if (index >= totalSlides) {
-        currentSlide = totalSlides - 1;
-    } else {
-        currentSlide = index;
-    }
-    updateSlidePosition();
-};
-
-// Initialize dots
-const initializeDots = () => {
-    dotsContainer.innerHTML = '';
-    const totalSlides = getTotalSlides();
-    for (let i = 0; i < totalSlides; i++) {
-        const dot = document.createElement('button');
-        dot.classList.add('dot');
-        if (i === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(i));
-        dotsContainer.appendChild(dot);
-    }
-};
-
-arrowsLeft.addEventListener('click', () => {
-    if (currentSlide > 0) {
-        currentSlide--;
+    window.addEventListener('resize', () => {
+        initializeDots();
         updateSlidePosition();
-    }
-});
+    });
 
-arrowsRight.addEventListener('click', () => {
-    if (currentSlide < getTotalSlides() - 1) {
-        currentSlide++;
-        updateSlidePosition();
-    }
-});
-
-window.addEventListener('resize', () => {
+    // Initial setup
     initializeDots();
     updateSlidePosition();
-});
-
-// Initial setup
-initializeDots();
-updateSlidePosition();
 
 
 });
